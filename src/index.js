@@ -4,6 +4,8 @@ const mongoose = require("mongoose");
 const db = require("../config/keys").mongoURI;
 const users = require("./routes/api/users");
 
+app.use(express.json())
+
 mongoose
     .connect(db, { useNewUrlParser: true, useCreateIndex: true })
     .then(() => console.log('MongoDB Connected...'))
