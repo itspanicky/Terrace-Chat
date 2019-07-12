@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const validator = require('validator');
+const Validator = require('validator');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const keys = require('../../config/keys');
 
 const UserSchema = new Schema({
     name: {
@@ -17,7 +18,7 @@ const UserSchema = new Schema({
         unique: true,
         lowercase: true,
         validate(value) {
-            if (!validator.isEmail(value)) {
+            if (!Validator.isEmail(value)) {
                 throw new Error('Email is invalid.')
             }
         }
@@ -42,40 +43,53 @@ const UserSchema = new Schema({
     }]
 })
 
-UserSchema.methods.generateAuthToken = async function () {
+// toJSON is called whenever the user obj is stringified
+// res.send uses JSON.stringify(obj) behind the scenes
+UserSchema.methods.toJSON = function () {
   const user = this
-  const token = jwt.sign({ _id: user._id.toString() }, 'nickyjon')
+  // removes extra mongoose properties like .save()
+  const userObject = user.toObject()
 
-  user.tokens = user.tokens.concat({ token })
-  await user.save()
-  return token
+  delete userObject.password
+  delete userObject.tokens
+
+  return userObject
+}
+
+UserSchema.methods.generateAuthToken = async function () {
+  const user = this;
+  const token = jwt.sign({ _id: user._id.toString() }, keys.secretOrKey);
+
+  user.tokens = user.tokens.concat({ token });
+  await user.save();
+  return token;
 }
 
 UserSchema.statics.findByCredentials = async (email, password) => {
-  const user = await User.findOne({ email })
+  const user = await User.findOne({ email });
 
   if (!user) {
-    throw new Error('Unable to login')
-  }
+    throw new Error('Unable to login');
+  };
 
-  const isMatch = await bcrypt.compare(password, user.password)
+  const isMatch = await bcrypt.compare(password, user.password);
 
   if (!isMatch) {
-    throw new Error('Unable to login')
-  }
+    throw new Error('Unable to login');
+  };
 
-  return user
+  return user;
 }
 
 // hash the plain text password before saving
 UserSchema.pre('save', async function(next) {
-  const user = this
+  const user = this;
 
   if (user.isModified('password')) {
-    user.password = await bcrypt.hash(user.password, 8)
-  }
+    user.password = await bcrypt.hash(user.password, 8);
+  };
 
-  next()
+  next();
 })
 
 module.exports = User = mongoose.model('users', UserSchema);

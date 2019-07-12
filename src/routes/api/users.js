@@ -1,42 +1,23 @@
 const express = require("express");
 const router = express.Router();
 const bcrypt = require('bcryptjs');
-const User = require("../../models/user");
+const User = require("../../models/User");
 const auth = require("../../middleware/auth");
+const validateRegisterInput = require('../../validation/register');
+const validateLoginInput = require('../../validation/login');
 
 router.get("/test", auth, (req, res) => {
     res.json({ msg: "This is the users route" })    // test route
 });
 
 // Create User
-router.post('/register', (req, res) => {
-    User.findOne({ email: req.body.email })
-        .then(user => {
-            if (user) {
-                return res.status(400).json({email: "Email is already registered with another user"})
-            } else {
-                const newUser = new User({
-                    name: req.body.name,
-                    email: req.body.email,
-                    password: req.body.password,
-                    dob: req.body.dob
-                })
+router.post('/register', async (req, res) => {
+  const {errors, isValid } = validateRegisterInput(req.body);
 
-                bcrypt.genSalt(10, (err, salt) => {
-                    bcrypt.hash(newUser.password, salt, (err, hash) => {
-                        if (err) throw err;
-                        newUser.password = hash;
-                        newUser.save()
-                            .then(user => res.json(user))
-                            .catch(err => console.log(err));
-                    })
-                })
-            }
-        })
-})
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
 
-// Another Create User
-router.post('/users', async (req, res) => {
   const user = new User(req.body)
   try {
     await user.save()
@@ -50,6 +31,12 @@ router.post('/users', async (req, res) => {
 
 // Login User 
 router.post('/login', async (req, res) => {
+  const { errors, isValid } = validateLoginInput(req.body);
+
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
+
   try {
     const user = await User.findByCredentials(req.body.email, req.body.password)
     const token = await user.generateAuthToken()
@@ -58,7 +45,5 @@ router.post('/login', async (req, res) => {
     res.status(400).send(e)
   }
 })
-
-
 
 module.exports = router;
