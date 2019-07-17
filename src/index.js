@@ -5,6 +5,7 @@ const db = require("../config/keys").mongoURI;
 const users = require("./routes/api/users");
 
 app.use(express.json())
+app.use("/api/users", users)
 
 mongoose
     .connect(db, { useNewUrlParser: true, useCreateIndex: true })
@@ -14,8 +15,6 @@ mongoose
 app.get("/", (req, res) => {
     res.send("Hello World!");   // test message
 });
-
-app.use("/api/users", users);
 
 const port = process.env.PORT || 3000;
 

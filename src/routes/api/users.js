@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const bcrypt = require('bcryptjs');
 const User = require("../../models/User");
 const auth = require("../../middleware/auth");
 const validateRegisterInput = require('../../validation/register');
@@ -13,7 +12,6 @@ router.get("/test", auth, (req, res) => {
 // Create User
 router.post('/register', async (req, res) => {
   const {errors, isValid } = validateRegisterInput(req.body);
-
   if (!isValid) {
     return res.status(400).json(errors);
   }
@@ -32,7 +30,6 @@ router.post('/register', async (req, res) => {
 // Login User 
 router.post('/login', async (req, res) => {
   const { errors, isValid } = validateLoginInput(req.body);
-
   if (!isValid) {
     return res.status(400).json(errors);
   }
