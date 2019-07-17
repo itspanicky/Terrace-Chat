@@ -17,6 +17,10 @@ const UserSchema = new Schema({
         unique: true,
         lowercase: true
     },
+    gender : {
+      type: String,
+      required: true
+    },
     dob: {
       type: String,
       required: true
