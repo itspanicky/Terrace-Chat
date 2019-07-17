@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 const MessageSchema = new Schema({
     user: {
         type: Schema.Types.ObjectId,
-        ref: 'users'
+        required: true,
+        ref: 'User'
     },
     livingRoom: {
         type: Schema.Types.ObjectId,
@@ -13,11 +14,9 @@ const MessageSchema = new Schema({
     text: {
         type: String,
         required: true
-    },
-    date: {
-        type: Date,
-        default: Date.now
     }
+}, {
+  timestamps: true
 })
 
 module.exports = Message = mongoose.model('message', MessageSchema);

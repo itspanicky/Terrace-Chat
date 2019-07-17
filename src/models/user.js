@@ -25,9 +25,8 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
-    date: {
-        type: Date,
-        default: Date.now
+    avatar: {
+      type: Buffer
     },
     tokens: [{
       token: {
@@ -35,6 +34,8 @@ const UserSchema = new Schema({
         required: true
       }
     }]
+}, {
+  timestamps: true
 })
 
 // toJSON is called whenever the user obj is stringified
@@ -86,4 +87,4 @@ UserSchema.pre('save', async function(next) {
   next();
 })
 
-module.exports = User = mongoose.model('users', UserSchema);
+module.exports = User = mongoose.model('User', UserSchema);
