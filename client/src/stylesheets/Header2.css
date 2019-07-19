@@ -32,3 +32,29 @@
     justify-content: center;
     align-items: center;
 }
+
+.register-login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.register-login > button {
+    padding: 20px 30px;
+    border-radius: 5px;
+    width: 25em;
+    font-size: 20px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.register {
+    border: 1px transparent;
+    background-color: #004EA5;
+    color: white;
+}
+
+.login {
+    border: 1px solid black;
+}

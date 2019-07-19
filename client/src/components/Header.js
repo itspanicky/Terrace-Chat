@@ -17,6 +17,7 @@ const Header = () => {
     // )
 
     return (
+        <>
         <div className="header-container">
             <div className="logo-name">TERRACE CHAT</div>
             <div className="logo-side">
@@ -26,8 +27,13 @@ const Header = () => {
                     ウ ェ ブ 上 で
                 </div>
             </div>
-            
+    
         </div>
+        <div className="register-login">
+            <button className="register">SIGN UP</button>
+            <button className="login">LOG IN</button>
+        </div>
+        </>
     )
 }
 
