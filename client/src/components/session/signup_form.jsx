@@ -44,7 +44,7 @@ class SignupForm extends React.Component {
     renderErrors() {
         return (
             <ul>
-                {Object.kets(this.state.errors).map((error, i) => (
+                {Object.keys(this.state.errors).map((error, i) => (
                     <li key={`error-${i}`}>
                         {this.state.errors[error]}
                     </li>
@@ -56,10 +56,37 @@ class SignupForm extends React.Component {
     render() {
         return (
             <div className="login-form-container">
-                {/* <form onSubmit={this.handleSubmit}>
-
-                </form> */}
-                <h1>signup</h1>
+                <form onSubmit={this.handleSubmit}>
+                    <div className="login-form">
+                        <br />
+                        <input type="text"
+                            value={this.state.email}
+                            onChange={this.update('email')}
+                            placeholder="Email"
+                        />
+                        <br />
+                        <input type="text"
+                            value={this.state.name}
+                            onChange={this.update('name')}
+                            placeholder="name"
+                        />
+                        <br />
+                        <input type="password"
+                            value={this.state.password}
+                            onChange={this.update('password')}
+                            placeholder="Password"
+                        />
+                        <br />
+                        <input type="password"
+                            value={this.state.password2}
+                            onChange={this.update('password2')}
+                            placeholder="Confirm Password"
+                        />
+                        <br />
+                        <input type="submit" value="Submit" />
+                        {this.renderErrors()}
+                    </div>
+                </form>
             </div>
         )
     }
