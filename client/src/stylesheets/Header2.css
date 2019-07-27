@@ -40,7 +40,7 @@
     align-items: center;
 }
 
-.register-login > button {
+.register-login > * {
     padding: 20px 30px;
     border-radius: 5px;
     width: 25em;
@@ -53,10 +53,14 @@
     border: 1px transparent;
     background-color: #004EA5;
     color: white;
+    text-decoration: none;
+    text-align: center;
 }
 
 .login {
     border: 1px solid black;
+    text-decoration: none;
+    text-align: center;
 }
 
 button:focus {

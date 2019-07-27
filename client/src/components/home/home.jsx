@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import io from 'socket.io-client';
 
-// const socket = io();
+const socket = io('http://localhost:3001');
 
 class Home extends React.Component {
     constructor(props) {

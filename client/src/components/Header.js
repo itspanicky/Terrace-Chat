@@ -1,5 +1,6 @@
 import React from 'react'; 
 import '../stylesheets/Header2.css'
+import { Link } from 'react-router-dom'
 
 const Header = () => {
 
@@ -30,8 +31,8 @@ const Header = () => {
     
         </div>
         <div className="register-login">
-            <button className="register">SIGN UP</button>
-            <button className="login">LOG IN</button>
+            <Link to={'/signup'} className="register">SIGN UP</Link >
+            <Link to={'/login'} className="login">LOG IN</Link >
         </div>
         </>
     )

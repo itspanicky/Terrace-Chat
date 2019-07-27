@@ -5,8 +5,8 @@ import SignupForm from './signup_form';
 const msp = state => {
     // debugger
     return {
-        // signedIn: state.session.isSignedIn,
-        // errors: state.errors.session
+        signedIn: state.session.isSignedIn,
+        errors: state.errors.session
     };
 };
 

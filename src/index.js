@@ -8,8 +8,8 @@ const socketio = require("socket.io")
 
 const io = require('socket.io')(http);
 const socketEvents = require('./sockets/events')(io);
-http.listen(3000, function() {
-    console.log('listening on port 3000')
+http.listen(3001, function() {
+    console.log('listening on port 3001')
 })
 
 
