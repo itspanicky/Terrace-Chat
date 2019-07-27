@@ -1,16 +1,14 @@
 const express = require("express");
 const app = express();
-const http = require("http").createServer(app);
+const http = require('http');
+const socketio = require('socket.io')
 const mongoose = require("mongoose");
 const db = require("../config/keys").mongoURI;
 const users = require("./routes/api/users");
-const socketio = require("socket.io")
 
-const io = require('socket.io')(http);
+const server = http.createServer(app)
+const io = socketio(server);
 const socketEvents = require('./sockets/events')(io);
-http.listen(3001, function() {
-    console.log('listening on port 3001')
-})
 
 
 
@@ -28,4 +26,4 @@ app.get("/", (req, res) => {
 
 const port = process.env.PORT || 5000;
 
-app.listen(port, () => {console.log(`Listening on port ${port}`)});
+server.listen(port, () => {console.log(`Listening on port ${port}`)});
