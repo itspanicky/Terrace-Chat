@@ -6,12 +6,7 @@ const LivingRoomSchema = new Schema ({
         type: String,
         required: true,
     }, 
-    users: [
-
-    ],
-    messages: [
-
-    ],
+    messages: [ {type: Schema.Types.ObjectId, ref: 'Message'}],
     created_at: {
         type: Date
     },
@@ -21,4 +16,20 @@ const LivingRoomSchema = new Schema ({
     }
 })
 
-module.exports = LivingRoom = mongoose.model('living rooms', LivingRoomSchema);
+// Virtual Property - helps mongoose see how these things are related
+userSchema.virtual('users', {
+  ref: 'User',
+  localField: '_id',
+  foreignField: 'livingroom'
+})
+
+    // await req.user
+    //   .populate({
+    //     path: "users",
+    //     match
+    //     }
+    //   })
+    //   .execPopulate();
+
+
+module.exports = LivingRoom = mongoose.model('Livingroom', LivingRoomSchema);

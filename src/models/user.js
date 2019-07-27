@@ -32,6 +32,10 @@ const UserSchema = new Schema({
     avatar: {
       type: Buffer
     },
+    livingroom: {
+      type: Schema.Types.ObjectId,
+      ref: 'User'
+    },
     tokens: [{
       token: {
         type: String,
