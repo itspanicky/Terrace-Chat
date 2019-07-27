@@ -1,8 +1,14 @@
 const express = require("express");
+const http = require("http");
 const app = express();
 const mongoose = require("mongoose");
 const db = require("../config/keys").mongoURI;
 const users = require("./routes/api/users");
+const socketio = requrie("socket.io")
+
+const server = http.createServer(app);
+const io = socketio(server);
+const socketEvents = require('./sockets/events')(io);
 
 app.use(express.json())
 app.use("/api/users", users)
