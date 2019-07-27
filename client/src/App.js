@@ -5,7 +5,7 @@ import './App.css';
 import { Route } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from './util/route_util';
 import { Switch } from 'react-router-dom';
-// import LoginFormContainer from './components/session/login_form_container';
+import LoginFormContainer from './components/session/login_form_container';
 import SignupFormContainer from './components/session/signup_form_container';
 
 function App() {
@@ -15,8 +15,8 @@ function App() {
 
       <Switch>
         <AuthRoute exact path="/" component={Header} />
-        <Route exact path="/home" component={Home} />
-        {/* <AuthRoute exact path="/login" component={LoginFormContainer} /> */}
+        <ProtectedRoute exact path="/home" component={Home} />
+        <AuthRoute exact path="/login" component={LoginFormContainer} />
         <AuthRoute exact path="/signup" component={SignupFormContainer} />
       </Switch>
 

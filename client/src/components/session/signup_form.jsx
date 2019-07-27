@@ -7,6 +7,8 @@ class SignupForm extends React.Component {
         this.state = {
             email: '',
             name: '',
+            dob: '',
+            gender: '',
             password: '',
             password2: '',
             errors: {}
@@ -16,10 +18,9 @@ class SignupForm extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (nextProps.signedIn === true) {
-            this.props.history.push('/login');
+        if (nextProps.currentUser === true) {
+            this.props.history.push('/home');
         }
-
         this.setState({errors: nextProps.errors})
     }
 
@@ -34,6 +35,8 @@ class SignupForm extends React.Component {
         let user = {
             email: this.state.email,
             name: this.state.name,
+            dob: this.state.dob,
+            gender: this.state.gender,
             password: this.state.password,
             password2: this.state.password2
         };
@@ -69,6 +72,18 @@ class SignupForm extends React.Component {
                             value={this.state.name}
                             onChange={this.update('name')}
                             placeholder="name"
+                        />
+                        <br />
+                        <input type="text"
+                            value={this.state.dob}
+                            onChange={this.update('dob')}
+                            placeholder="Date of birth"
+                        />
+                        <br />
+                        <input type="text"
+                            value={this.state.gender}
+                            onChange={this.update('gender')}
+                            placeholder="Gender"
                         />
                         <br />
                         <input type="password"
