@@ -4,7 +4,6 @@ import SignupForm from './signup_form';
 
 const msp = state => {
     return {
-        // signedIn: state.session.isSignedIn,
         errors: state.errors.session
     };
 };
