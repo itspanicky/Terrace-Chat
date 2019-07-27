@@ -10,6 +10,7 @@ export const login = (userData) => {
 
 export const setAuthToken = (token) => {
     if (token) {
+        // any request we make after will automatically have the token
         axios.defaults.headers.common["Authorization"] = token;
     } else {
         delete axios.defaults.headers.common["Authorization"]

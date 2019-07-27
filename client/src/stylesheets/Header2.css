@@ -58,3 +58,7 @@
 .login {
     border: 1px solid black;
 }
+
+button:focus {
+    outline: 0;
+}

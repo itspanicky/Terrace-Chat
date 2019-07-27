@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link, withRouter } from 'react-router-dom';
 import useForm from './useForm';
 import { signup, login } from '../../util/session_api_util';
 
@@ -44,4 +45,4 @@ const Form = () => {
     )
 }
 
-export default Form;
+export default withRouter(Form);

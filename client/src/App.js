@@ -8,6 +8,12 @@ function App() {
   return (
     <div className="App">
       <Header />
+
+      {/* <Switch>
+        <AuthRoute exact path="/" component={Header} />
+      </Switch> */}
+
+
     </div>
   );
 }
