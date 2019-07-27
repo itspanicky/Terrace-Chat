@@ -36,6 +36,7 @@ const UserSchema = new Schema({
       type: Schema.Types.ObjectId,
       ref: 'User'
     },
+    pastrooms: [{ type: Schema.Types.ObjectId, ref: 'User'}],
     tokens: [{
       token: {
         type: String,

@@ -12,6 +12,8 @@
     - Room has user ids? 
     - Users who have room ids will be brought to a room (Chat page).
 
+* Upon user leaving a room - Backend will check if there is a person (correct gender and does not have ObjectId in pastrooms object) to replace that user. 
+
 * Chat/Room page - Socket.io 
  - On render Chat page will fetch all Messages pertaining to Room id and render them on the page. 
  - Users will be put in a room according to their room.id 
@@ -25,3 +27,4 @@
  #### Additional features.
 * Upon user creation - If there is a room that is missing a certain gender. Join that one instead if you are that gender. 
 * Chat Rooms will expire over time.
+* Users will have the option to choose to join a preexisting group or join a new one. 

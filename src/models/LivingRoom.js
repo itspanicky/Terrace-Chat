@@ -17,13 +17,13 @@ const LivingRoomSchema = new Schema ({
 })
 
 // Virtual Property - helps mongoose see how these things are related
-userSchema.virtual('users', {
+LivingRoomSchema.virtual('users', {
   ref: 'User',
   localField: '_id',
   foreignField: 'livingroom'
 })
 
-    // await req.user
+    // await req.livingroom
     //   .populate({
     //     path: "users",
     //     match
