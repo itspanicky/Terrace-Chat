@@ -4,7 +4,7 @@ const app = express();
 const mongoose = require("mongoose");
 const db = require("../config/keys").mongoURI;
 const users = require("./routes/api/users");
-const socketio = requrie("socket.io")
+const socketio = require("socket.io")
 
 const server = http.createServer(app);
 const io = socketio(server);
