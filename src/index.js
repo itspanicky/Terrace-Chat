@@ -1,14 +1,18 @@
 const express = require("express");
-const http = require("http");
 const app = express();
+const http = require("http").createServer(app);
 const mongoose = require("mongoose");
 const db = require("../config/keys").mongoURI;
 const users = require("./routes/api/users");
 const socketio = require("socket.io")
 
-const server = http.createServer(app);
-const io = socketio(server);
+const io = require('socket.io')(http);
 const socketEvents = require('./sockets/events')(io);
+http.listen(3000, function() {
+    console.log('listening on port 3000')
+})
+
+
 
 app.use(express.json())
 app.use("/api/users", users)
