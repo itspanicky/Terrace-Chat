@@ -2,7 +2,7 @@ import React from 'react';
 import Header from './components/Header';
 import Home from './components/home/home_container';
 import './App.css';
-import { Route } from 'react-router-dom';
+// import { Route } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from './util/route_util';
 import { Switch } from 'react-router-dom';
 import LoginFormContainer from './components/session/login_form_container';
