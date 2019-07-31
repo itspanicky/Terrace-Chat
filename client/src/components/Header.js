@@ -28,7 +28,6 @@ const Header = () => {
                     ウ ェ ブ 上 で
                 </div>
             </div>
-    
         </div>
         <div className="register-login">
             <Link to={'/signup'} className="register">SIGN UP</Link >

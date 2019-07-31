@@ -59,9 +59,9 @@ class LoginForm extends React.Component {
 
     render() {
         return (
-            <div className="login-form-container">
+            <div className="session-form-container">
                 <form onSubmit={this.handleSubmit}>
-                    <div className="login-form">
+                    <div className="session-form">
                         <br />
                         <input type="text"
                             value={this.state.email}
