@@ -1,5 +1,5 @@
 const Validator = require("validator");
-const validText = require("./valid-text");
+const { validText, validDob } = require("./valid-text");
 
 module.exports = function validateRegisterInput(data) {
     let errors = {};
@@ -15,6 +15,16 @@ module.exports = function validateRegisterInput(data) {
 
     if (Validator.isEmpty(data.name)) {
         errors.name = "Name is required";
+    }
+
+    if (Validator.isEmpty(data.gender)) {
+        errors.gender = "Gender is required"
+    }
+
+    if (Validator.isEmpty(data.dob)) {
+        errors.dob = "Date of birth is required"
+    } else if (!validDob(data.dob)) {
+        errors.dob = "Must at least 18 years of age"
     }
 
     if (Validator.isEmpty(data.email)) {

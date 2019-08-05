@@ -23,6 +23,7 @@ class SignupForm extends React.Component {
         if (nextProps.currentUser === true) {
             this.props.history.push('/home');
         }
+        
         this.setState({errors: nextProps.errors})
     }
 
@@ -42,11 +43,8 @@ class SignupForm extends React.Component {
             password: this.state.password,
             password2: this.state.password2
         };
-        if (this.validSubmit()) {
-            this.props.signup(user, this.props.history);
-        } else {
-            this.setState({errors: ["Invalid Submission"]})
-        }
+        
+        this.props.signup(user, this.props.history);
     }
 
     renderErrors() {
@@ -60,19 +58,8 @@ class SignupForm extends React.Component {
             </ul>
         )
     }
-
-    validSubmit() {
-        if (this.state.email.length === 0) return false;
-        if (this.state.name.length === 0) return false;
-        if (this.state.dob.length === 0) return false;
-        if (this.state.gender.length === 0) return false;
-        if (this.state.password.length === 0) return false;
-        if (this.state.password2.length === 0) return false;
-        return true;
-    }
     
     render() {
-        // const isDisabled = this.validSubmit() ? "disabled" : "";
         return (
             <>
                 <div className="header-container header-animate">
