@@ -19,6 +19,13 @@ router.post('/register', async (req, res) => {
   }
   const user = new User(req.body)
 
+  // Look for 3 males and 3 females in database and form livingroom.
+  if (req.body.gender === "male") {
+
+  } else {
+
+  }
+
   try {
     await user.save()
     const token = await user.generateAuthToken()
