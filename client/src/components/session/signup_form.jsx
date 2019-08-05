@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import '../../stylesheets/session_form.css'
 
 class SignupForm extends React.Component {
@@ -15,6 +15,7 @@ class SignupForm extends React.Component {
             errors: {}
         };
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.validSubmit.bind(this);
         this.clearedErrors = false;
     }
 
@@ -41,8 +42,11 @@ class SignupForm extends React.Component {
             password: this.state.password,
             password2: this.state.password2
         };
-
-        this.props.signup(user, this.props.history);
+        if (this.validSubmit()) {
+            this.props.signup(user, this.props.history);
+        } else {
+            this.setState({errors: ["Invalid Submission"]})
+        }
     }
 
     renderErrors() {
@@ -57,64 +61,82 @@ class SignupForm extends React.Component {
         )
     }
 
+    validSubmit() {
+        if (this.state.email.length === 0) return false;
+        if (this.state.name.length === 0) return false;
+        if (this.state.dob.length === 0) return false;
+        if (this.state.gender.length === 0) return false;
+        if (this.state.password.length === 0) return false;
+        if (this.state.password2.length === 0) return false;
+        return true;
+    }
+    
     render() {
+        // const isDisabled = this.validSubmit() ? "disabled" : "";
         return (
             <>
                 <div className="header-container header-animate">
                     <div className="logo-name">TERRACE CHAT</div>
-                    <div className="logo-side">
+                    <Link to="/" className="logo-side">
                         <div className="logo-motto">ON THE</div>
                         <div className="logo-motto">INTERNET</div>
                         <div className="logo-line">
                             ウ ェ ブ 上 で
                         </div>
-                    </div>
+                    </Link>
                 </div>
-            <div className="session-form-container">
-                <form onSubmit={this.handleSubmit}>
-                    <div className="session-form">
-                        <br />
-                        <input type="text"
-                            value={this.state.email}
-                            onChange={this.update('email')}
-                            placeholder="Email"
-                        />
-                        <br />
-                        <input type="text"
-                            value={this.state.name}
-                            onChange={this.update('name')}
-                            placeholder="name"
-                        />
-                        <br />
-                        <input type="text"
-                            value={this.state.dob}
-                            onChange={this.update('dob')}
-                            placeholder="Date of birth"
-                        />
-                        <br />
-                        <input type="text"
-                            value={this.state.gender}
-                            onChange={this.update('gender')}
-                            placeholder="Gender"
-                        />
-                        <br />
-                        <input type="password"
-                            value={this.state.password}
-                            onChange={this.update('password')}
-                            placeholder="Password"
-                        />
-                        <br />
-                        <input type="password"
-                            value={this.state.password2}
-                            onChange={this.update('password2')}
-                            placeholder="Confirm Password"
-                        />
-                        <br />
-                        <input type="submit" value="Submit" />
-                        {this.renderErrors()}
-                    </div>
-                </form>
-            </div>
+                <div className="session-form-container">
+                    <form onSubmit={this.handleSubmit}>
+                        <div className="session-form">
+                            <br />
+                            <input type="text"
+                                value={this.state.email}
+                                onChange={this.update('email')}
+                                placeholder="Email"
+                                autoComplete="email"
+                            />
+                            <br />
+                            <input type="text"
+                                value={this.state.name}
+                                onChange={this.update('name')}
+                                placeholder="name"
+                                autoComplete="username"
+                            />
+                            <br />
+                            <input type="date"
+                                value={this.state.dob}
+                                onChange={this.update('dob')}
+                                placeholder="Date of birth"
+                            />
+                            <br />
+                            <select
+                                value={this.state.gender}
+                                onChange={this.update('gender')}>
+                                <option value="0">Select Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                            <br />
+                            <input type="password"
+                                value={this.state.password}
+                                onChange={this.update('password')}
+                                placeholder="Password"
+                                autoComplete="new-password"
+                            />
+                            <br />
+                            <input type="password"
+                                value={this.state.password2}
+                                onChange={this.update('password2')}
+                                placeholder="Confirm Password"
+                                autoComplete="new-password"
+                            />
+                            <br />
+                            <input type="submit" value="Submit" />
+                            {this.renderErrors()}
+                        </div>
+                    </form>
+                </div>
+                <Link className="link_to" to='/login'>Log in</Link>
             </>
         )
     }

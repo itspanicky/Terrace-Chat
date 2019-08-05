@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 class LoginForm extends React.Component {
     constructor(props) {
@@ -59,27 +59,42 @@ class LoginForm extends React.Component {
 
     render() {
         return (
-            <div className="session-form-container">
-                <form onSubmit={this.handleSubmit}>
-                    <div className="session-form">
-                        <br />
-                        <input type="text"
-                            value={this.state.email}
-                            onChange={this.update('email')}
-                            placeholder="Email"
-                        />
-                        <br />
-                        <input type="password"
-                            value={this.state.password}
-                            onChange={this.update('password')}
-                            placeholder="Password"
-                        />
-                        <br />
-                        <input type="submit" value="Submit" />
-                        {this.renderErrors()}
-                    </div>
-                </form>
-            </div>
+            <>
+                <div className="header-container header-animate">
+                    <div className="logo-name">TERRACE CHAT</div>
+                    <Link to="/" className="logo-side">
+                        <div className="logo-motto">ON THE</div>
+                        <div className="logo-motto">INTERNET</div>
+                        <div className="logo-line">
+                            ウ ェ ブ 上 で
+                        </div>
+                    </Link>
+                </div>
+                <div className="session-form-container">
+                    <form onSubmit={this.handleSubmit}>
+                        <div className="session-form">
+                            <br />
+                            <input type="text"
+                                value={this.state.email}
+                                onChange={this.update('email')}
+                                placeholder="Email"
+                                autoComplete="email"
+                            />
+                            <br />
+                            <input type="password"
+                                value={this.state.password}
+                                onChange={this.update('password')}
+                                placeholder="Password"
+                                autoComplete="current-password"
+                            />
+                            <br />
+                            <input type="submit" value="Submit" />
+                            {this.renderErrors()}
+                        </div>
+                    </form>
+                </div>
+                <Link className="link_to" to='/signup'>Sign Up</Link>
+            </>
         );
     }
 }

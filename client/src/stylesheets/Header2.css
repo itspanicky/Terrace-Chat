@@ -43,11 +43,20 @@
 .register-login > * {
     padding: 20px 30px;
     border-radius: 5px;
-    width: 25em;
+    width: 20em;
     font-size: 20px;
     font-weight: bold;
     margin: 5px;
     cursor: pointer;
+    transition: all 0.3s ease 0s;
+}
+
+.register-login > *:hover {
+    width: 25em;
+    box-shadow: inset 0px 5px 40px -10px rgba(0,0,0,0.57);
+    -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+    -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+    transition: all 0.3s ease 0s;
 }
 
 .register {
@@ -58,10 +67,20 @@
     text-align: center;
 }
 
+.register:hover {
+    color: black;
+    background-color: lightblue;
+}
+
 .login {
     border: 1px solid black;
     text-decoration: none;
     text-align: center;
+}
+
+.login:hover {
+    background-color: black;
+    color: white;
 }
 
 button:focus {
