@@ -24,6 +24,7 @@ class SignupForm extends React.Component {
             this.props.history.push('/home');
         }
         
+        
         this.setState({errors: nextProps.errors})
     }
 
