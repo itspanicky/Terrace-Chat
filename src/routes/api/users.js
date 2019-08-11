@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../../models/User");
+const { createRoom }= require("../utils/utils.js")
 const auth = require("../../middleware/auth");
 const multer = require("multer");
 const sharp = require('sharp');
@@ -18,16 +19,11 @@ router.post('/register', async (req, res) => {
     return res.status(400).json(errors);
   }
   const user = new User(req.body)
-
   // Look for 3 males and 3 females in database and form livingroom.
-  if (req.body.gender === "male") {
-
-  } else {
-
-  }
-
+  
   try {
     await user.save()
+    createRoom(user)
     const token = await user.generateAuthToken()
     res.status(201).send({ user, token })
   } catch (e) {

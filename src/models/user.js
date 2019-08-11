@@ -34,7 +34,7 @@ const UserSchema = new Schema({
     },
     livingroom: {
       type: Schema.Types.ObjectId,
-      ref: 'User'
+      ref: 'LivingRoom'
     },
     pastrooms: [{ type: Schema.Types.ObjectId, ref: 'User'}],
     tokens: [{
