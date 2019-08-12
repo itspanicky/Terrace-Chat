@@ -45,6 +45,8 @@ const UserSchema = new Schema({
     }]
 }, {
   timestamps: true
+}, {
+  toJSON: {virtuals: true}
 })
 
 // toJSON is called whenever the user obj is stringified

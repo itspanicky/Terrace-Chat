@@ -4,7 +4,9 @@ const http = require('http');
 const socketio = require('socket.io')
 const mongoose = require("mongoose");
 const db = require("../config/keys").mongoURI;
+
 const users = require("./routes/api/users");
+
 
 const server = http.createServer(app)
 const io = socketio(server);

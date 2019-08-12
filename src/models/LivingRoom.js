@@ -18,7 +18,7 @@ const LivingRoomSchema = new Schema(
 LivingRoomSchema.virtual('users', {
   ref: 'User',
   localField: '_id',
-  foreignField: 'LivingRoom'
+  foreignField: 'livingroom'
 })
 
     // await req.livingroom
