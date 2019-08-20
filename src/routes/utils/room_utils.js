@@ -7,7 +7,6 @@ const createRoom = async (user) => {
         "Female": 3
     }
 
-    
     let males = [];
     let females = [];
     count[user.gender] -= 1
