@@ -1,0 +1,51 @@
+.session-form-container {
+    display: flex;
+    position: relative;
+}
+
+.field-email,
+.field-name,
+.field-dob,
+.field-gender,
+.field-password,
+.field-password2,
+.field-submit {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 50px;
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid black;
+    border-radius: 5px;
+    transition: all 0.5s ease;
+}
+
+.field-email input,
+.field-name input,
+.field-dob input,
+.field-gender select,
+.field-password input,
+.field-password2 input {
+    background: none;
+    border: none;
+    flex: 1;
+    height: 100%;
+    outline: none;
+}
+
+div.inactive {
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, 50%);
+}
+
+div.active {
+    opacity: 1;
+    pointer-events: all;
+    transform: translate(-50%, -50%);
+
+}
