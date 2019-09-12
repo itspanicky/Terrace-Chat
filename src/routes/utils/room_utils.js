@@ -17,8 +17,6 @@ const createRoom = async (user) => {
         females.concat(data)
     })
 
-    user.updateOne({name: "changed"})
-
     if (males.length + females.length === 5) {
         const newLivingRoom = new LivingRoom();
         newLivingRoom.usersInRoom.push(user);
