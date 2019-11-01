@@ -108,8 +108,8 @@ router.patch('/me', auth, async (req, res) => {
 // DELETE user '/api/users/me'
 router.delete('/me', auth, async (req, res) => {
   try {
-    await req.user.remove()
-    res.send(req.suser)
+    await req.user.deleteOne()
+    res.send(req.user)
   } catch (e) {
     res.status(500).send()
   }
