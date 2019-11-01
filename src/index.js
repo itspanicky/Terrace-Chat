@@ -4,15 +4,11 @@ const http = require('http');
 const socketio = require('socket.io')
 const mongoose = require("mongoose");
 const db = require("../config/keys").mongoURI;
-
 const users = require("./routes/api/users");
-
 
 const server = http.createServer(app)
 const io = socketio(server);
 const socketEvents = require('./sockets/events')(io);
-
-
 
 app.use(express.json())
 app.use("/api/users", users)
@@ -23,7 +19,7 @@ mongoose
     .catch(err => console.log(err));
 
 app.get("/", (req, res) => {
-    res.send("Hello World!");   // test message
+    res.send("Hello World!!");   // test message
 });
 
 const port = process.env.PORT || 5000;

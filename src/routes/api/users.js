@@ -15,19 +15,22 @@ router.get("/test", auth, (req, res) => {
 
 // Create User '/api/users/register'
 router.post('/register', async (req, res) => {
-  const {errors, isValid } = validateRegisterInput(req.body);
+  // ***ISSUE***
+  // does not handle absence of required Key.
+  // Expects DOB String in specific format. ex) "Dec 31 1999"
+  const { errors, isValid } = validateRegisterInput(req.body);
   if (!isValid) {
     return res.status(400).json(errors);
   }
-  const user = new User(req.body)
-  // Look for 3 males and 3 females in database and form livingroom.
   
+  // Look for 3 males and 3 females in database and form livingroom.
   try {
-    await user.save()
-    createRoom(user)
-    const token = await user.generateAuthToken()
-    res.status(201).send({ user, token })
-  } catch (e) {
+        const user = new User(req.body);
+        await user.save();
+        // createRoom(user)
+        const token = await user.generateAuthToken();
+        res.status(201).send({ user, token });
+      } catch (e) {
     res.status(400).send(e)
   }
 
@@ -39,10 +42,10 @@ router.post('/login', async (req, res) => {
   if (!isValid) {
     return res.status(400).json(errors);
   }
-
   try {
     const user = await User.findByCredentials(req.body.email, req.body.password)
     const token = await user.generateAuthToken()
+    console.log('logging in?')
     res.send({ user, token })
   } catch (e) {
     res.status(400).send(e)
@@ -56,7 +59,7 @@ router.post('/logout', auth, async (req, res) => {
       return token.token !== req.token
     })
     await req.user.save()
-    res.send()
+    res.status(200).json({msg: "successfully logged out"})
   } catch (e) {
     res.status(500).send()
   }
