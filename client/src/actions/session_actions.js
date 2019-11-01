@@ -31,6 +31,7 @@ export const logout = () => dispatch => {
 
 export const signup = user => dispatch => (
     APIUtil.signup(user).then((res) => {
+        debugger
         const { user, token } = res.data;
         localStorage.setItem("jwtToken", token);
         APIUtil.setAuthToken(token);

@@ -3,7 +3,8 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    margin: 150px auto;
+    padding: 150px 0 20px 0;
+    margin: 0 auto;
     
 }
 
@@ -37,6 +38,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding-top: 100px;
 }
 
 .register-login > * {

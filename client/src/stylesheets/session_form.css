@@ -1,8 +1,19 @@
 .session-form-container {
-    display: flex;
     position: relative;
+    display: flex;
+    justify-content: center;
 }
 
+.field > input,
+.field > select {
+    width: 300px;
+    height: 30px;
+    outline: none;
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 3px 10px;
+}
+/* 
 .field-email,
 .field-name,
 .field-dob,
@@ -48,4 +59,4 @@ div.active {
     pointer-events: all;
     transform: translate(-50%, -50%);
 
-}
+} */

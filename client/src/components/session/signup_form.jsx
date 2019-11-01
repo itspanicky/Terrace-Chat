@@ -86,7 +86,7 @@ class SignupForm extends React.Component {
                 <div className="session-form">
                   <br />
 
-                  <div className="field-email">
+                  <div className="field">
                     <input
                       type="text"
                       value={this.state.email}
@@ -94,12 +94,11 @@ class SignupForm extends React.Component {
                       placeholder="Email"
                       autoComplete="email"
                     />
-                    <i className="fas fa-arrow-down" />
                   </div>
 
                   <br />
 
-                  <div className="field-name inactive">
+                  <div className="field">
                     <input
                       type="text"
                       value={this.state.name}
@@ -107,23 +106,21 @@ class SignupForm extends React.Component {
                       placeholder="name"
                       autoComplete="username"
                     />
-                    <i className="fas fa-arrow-down" />
                   </div>
 
                   <br />
-                  <div className="field-dob inactive">
+                  <div className="field">
                     <input
                       type="date"
                       value={this.state.dob}
                       onChange={this.update("dob")}
                       placeholder="Date of birth"
                     />
-                    <i className="fas fa-arrow-down" />
                   </div>
 
                   <br />
 
-                  <div className="field-gender inactive">
+                  <div className="field">
                     <select
                       value={this.state.gender}
                       onChange={this.update("gender")}
@@ -136,7 +133,7 @@ class SignupForm extends React.Component {
 
                   <br />
 
-                  <div className="field-password inactive">
+                  <div className="field">
                     <input
                       type="password"
                       value={this.state.password}
@@ -144,12 +141,11 @@ class SignupForm extends React.Component {
                       placeholder="Password"
                       autoComplete="new-password"
                     />
-                    <i className="fas fa-arrow-down" />
                   </div>
 
                   <br />
 
-                  <div className="field-password2 inactive">
+                  <div className="field">
                     <input
                       type="password"
                       value={this.state.password2}
@@ -157,12 +153,11 @@ class SignupForm extends React.Component {
                       placeholder="Confirm Password"
                       autoComplete="new-password"
                     />
-                    <i className="fas fa-arrow-down" />
                   </div>
 
                   <br />
 
-                  <div className="field-submit inactive">
+                  <div className="field-submit">
                     <input type="submit" value="Submit" />
                   </div>
                   {this.renderErrors()}
