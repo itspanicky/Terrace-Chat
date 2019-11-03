@@ -1,4 +1,4 @@
-const LivingRoom = require("../../models/LivingRoom")
+const Room = require("../../models/Room")
 
 const createRoom = async (user) => {
     const count = {

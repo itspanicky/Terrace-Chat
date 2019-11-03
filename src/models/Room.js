@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const LivingRoomSchema = new Schema(
+const RoomSchema = new Schema(
   {
     name: {
       type: String
@@ -15,11 +15,11 @@ const LivingRoomSchema = new Schema(
 );
 
 // Virtual Property - helps mongoose see how these things are related
-LivingRoomSchema.virtual('users', {
-  ref: 'User',
-  localField: '_id',
-  foreignField: 'livingroom'
-})
+// RoomSchema.virtual('users', {
+//   ref: 'User',
+//   localField: '_id',
+//   foreignField: 'livingroom'
+// })
 
     // await req.livingroom
     //   .populate({
@@ -30,4 +30,4 @@ LivingRoomSchema.virtual('users', {
     //   .execPopulate();
 
 
-module.exports = LivingRoom = mongoose.model('LivingRoom', LivingRoomSchema);
+module.exports = Room = mongoose.model('Room', RoomSchema);

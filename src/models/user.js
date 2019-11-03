@@ -34,9 +34,17 @@ const UserSchema = new Schema({
     },
     livingroom: {
       type: Schema.Types.ObjectId,
-      ref: 'LivingRoom'
+      ref: 'Room'
     },
-    pastrooms: [{ type: Schema.Types.ObjectId, ref: 'User'}],
+    privateroom: {
+      type: Schema.Types.ObjectId,
+      ref: 'Room'
+    },
+    available: {
+      type: Boolean,
+      default: true
+    },
+    pastlivingrooms: [{ type: Schema.Types.ObjectId, ref: 'User'}],
     tokens: [{
       token: {
         type: String,
