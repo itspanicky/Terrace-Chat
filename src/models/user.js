@@ -36,10 +36,10 @@ const UserSchema = new Schema({
       type: Schema.Types.ObjectId,
       ref: 'Room'
     },
-    privateroom: {
+    privateroom: [{
       type: Schema.Types.ObjectId,
       ref: 'Room'
-    },
+    }],
     available: {
       type: Boolean,
       default: true
