@@ -19,12 +19,5 @@ const MessageSchema = new Schema({
   timestamps: true
 })
 
-// hash the plain text password before saving
-MessageSchema.pre('save', async function(next) {
-  const message = this;
-  console.log('Update Room of this Msg')
-
-  next();
-})
 
 module.exports = Message = mongoose.model('Message', MessageSchema);

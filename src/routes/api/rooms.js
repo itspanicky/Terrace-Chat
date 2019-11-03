@@ -7,6 +7,9 @@ const validateRoom = require("../../validation/room");
 // Create Room '/api/rooms/create'
 // Mainly for private chats
 router.post('/create', auth, async (req, res) => {
+  // CONCERNS
+  // Need to update Users' privaterooms  with this ObjectId
+
   const user = req.user 
   // Assumes frontend Post doesn't have own user id.
   req.body.usersInRoom.push({_id: user.id})
@@ -48,7 +51,5 @@ router.get('/messages', auth, async (req, res) => {
     res.status(400).send(e)
   }
 })
-
-// Get the last 15 messages in this Room
 
 module.exports = router;

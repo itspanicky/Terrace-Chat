@@ -26,12 +26,6 @@ RoomSchema.methods.toJSON = function () {
   return roomObject
 }
 
-// hash the plain text password before saving
-RoomSchema.pre('save', async function(next) {
-  const room = this;
-  console.log("Update Users")
-  next();
-})
 
 // Virtual Property - helps mongoose see how these things are related
 // RoomSchema.virtual('messages', {

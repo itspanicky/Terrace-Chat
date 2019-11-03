@@ -36,7 +36,7 @@ const UserSchema = new Schema({
       type: Schema.Types.ObjectId,
       ref: 'Room'
     },
-    privateroom: [{
+    privaterooms: [{
       type: Schema.Types.ObjectId,
       ref: 'Room'
     }],
