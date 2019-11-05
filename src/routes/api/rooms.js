@@ -38,27 +38,31 @@ router.post('/create', auth, async (req, res) => {
   }
 })
 
-// GET all messages and userIds in Room
+// GET all RoomInfo - Messages / Users
 // Example Query {{url}}/api/rooms/messages?roomId=5dbf2435c4c2886ccb15b95d
 router.get('/messages', auth, async (req, res) => {
   const { roomId, start, end } = req.query
   const limitAmt = end - start
   try {
-    // if there is a specified params
+    // if there are specified params
     if (start && end) {
       const room = await Room.findOne({ _id: roomId}).populate({
-        path: 'Message',
+        path: 'messages',
         options: {
+          sort: {createdAt: 1},
           limit: limitAmt,
-          skip: end
+          skip: parseInt(start)
         }
       })
-      // assume that array in database is in order based on recency. 
       res.status(201).send({ room })
     } else {
       // sends all messages if params not specified.
-      const room = await Room.findOne({ _id: roomId})
-      room.populate({ path: 'Message' })
+      const room = await Room.findOne({ _id: roomId }).populate({
+        path: "messages",
+        options: {
+          sort: { createdAt: 1 }
+        }
+      });
       res.status(201).send({ room })
     }
   } catch (e) {

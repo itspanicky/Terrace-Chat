@@ -31,8 +31,8 @@ RoomSchema.methods.toJSON = function () {
 // RoomSchema.virtual('messages', {
 //   ref: 'User',
 //   localField: '_id',
-//   foreignField: 'livingroom'
-// })
+//   foreignField: 'Message'
+// });
 
     // await req.livingroom
     //   .populate({
