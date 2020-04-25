@@ -3,8 +3,8 @@ const Schema = mongoose.Schema;
 
 const WaitingRoomSchema = new Schema(
   {
-    males: { type: Array },
-    females: {type: Array }
+    males: { type: Array, default: [] },
+    females: { type: Array, default: [] }
   },
   {
     timestamps: true,
