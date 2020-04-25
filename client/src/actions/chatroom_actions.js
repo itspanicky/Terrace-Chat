@@ -11,7 +11,9 @@ export const requestRoomInfo = (params) => dispatch => {
     // Going to assume Authtoken is set from other functions
     // const token = localStorage.token
     // APIUtil.setAuthToken(token);
-    APIUtil.loadRoom(params)
-    // Dispatch a logout action
-    dispatch(receieveRoomInfo());
+    APIUtil.loadRoom(params).then((res) => {
+
+        // Dispatch a logout action
+        dispatch(receiveRoomInfo());
+    })
 };

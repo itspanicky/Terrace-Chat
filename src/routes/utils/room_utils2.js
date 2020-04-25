@@ -11,7 +11,7 @@ const createRoom = async (user) => {
     count[user.gender] -= 1
     
       if (males.length >= count["Male"] && females.length >= count["Female"]) {
-        const newLivingRoom = new LivingRoom();
+        const newLivingRoom = new Room();
         newLivingRoom.usersInRoom.push(user);
         await user.updateOne({ livingroom: newLivingRoom._id })
         try {
