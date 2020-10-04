@@ -27,9 +27,10 @@ router.post('/register', async (req, res) => {
   try {
         const user = new User(req.body);
         await user.save();
-        // createRoom(user)
+        const updatedUser = await createRoom(user);
         const token = await user.generateAuthToken();
-        res.status(201).send({ user, token });
+        console.log("Is user in a room?", updatedUser.livingroom);
+        res.status(201).send({ user: updatedUser, token });
       } catch (e) {
     res.status(400).send(e)
   }
